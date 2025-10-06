@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalaivanan S — Accessibility & PDF Specialist</title>
+  <meta name="description" content="Portfolio of Kalaivanan S — PDF accessibility, WCAG remediation, accessible forms." />
+
+  <style>
+    :root {
+      --bg: #001f3f; /* deep navy */
+      --bg-gradient: linear-gradient(180deg, #001f3f 0%, #002b5c 100%);
+      --card: #00264d;
+      --muted: #a7b2c8;
+      --accent: #00bfff; /* bright blue */
+      --accent-2: #f59e0b;
+      --text: #f0f4f8;
+      --radius: 12px;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg-gradient);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      padding: 32px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute; left: 8px; top: 8px;
+      padding: 8px 12px;
+      background: #fff; color: #001f3f;
+      border-radius: 6px;
+      transform: translateY(-120%);
+      transition: transform .2s ease;
+      z-index: 100;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      background: #001b33;
+      padding: 16px 24px;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .logo {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      font-weight: 700; color: #001f3f;
+    }
+
+    nav ul {
+      list-style: none; display: flex; gap: 16px;
+      margin: 0; padding: 0;
+    }
+    nav a {
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    nav a:hover, nav a[aria-current="page"] {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    main { max-width: 1100px; margin: auto; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--accent);
+    }
+    .intro p { color: var(--muted); margin-top: 8px; }
+    .cta-row { display: flex; gap: 12px; margin-top: 16px; }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #001f3f;
+      text-decoration: none;
+      transition: background .3s;
+    }
+    .btn:hover { background: #0099cc; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .proj-card {
+      background: rgba(0,0,0,0.2);
+      padding: 14px;
+      border-radius: 12px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .proj-title { font-weight: 700; color: var(--accent); }
+    .proj-meta { font-size: 13px; color: var(--muted); }
+    .proj-desc { color: var(--muted); }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0; padding: 0;
+    }
+    .skill {
+      background: rgba(255,255,255,0.08);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    form { display: grid; gap: 8px; }
+    input, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid var(--accent);
+    }
+    .note { font-size: 13px; color: var(--muted); }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 640px) {
+      .projects { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <div class="brand">
+      <div class="logo">KS</div>
+      <div>
+        <div style="font-weight:800">Kalaivanan S</div>
+        <div style="font-size:13px;color:var(--muted)">PDF Accessibility • WCAG • Forms</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#main" aria-current="page">Home</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="card intro">
+        <h1>I make documents & PDFs accessible for everyone.</h1>
+        <p>WCAG & Section 508 remediation, screen reader–friendly forms, accessibility audits, and training for teams.</p>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Hire Me</a>
+          <a class="btn btn-ghost" href="#projects">See My Work</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>Contact & Availability</h3>
+        <p class="note">Open to freelance, contract, or training roles. Based in India, available worldwide.</p>
+        <p><strong>Email:</strong> <a href="mailto:yuvankalai806@gamil.com">yuvankalai806@gamil.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kalaivanan-s-a39969286/">https://www.linkedin.com/in/kalaivanan-s-a39969286/</a></p>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <article class="proj-card">
+                    <div class="proj-title">Accessibility Remediation</div>
+          <p class="proj-desc">Fixed reading order, added semantic tags, and improved keyboard navigation. Result: PAC score 100%.</p>
+          <div class="tags"><span class="tag">PDF</span><span class="tag">WCAG</span><span class="tag">PAC</span><span class="tag">CommonLook Accessibility</span></div>
+        </article>
+
+        <article class="proj-card">
+                    <div class="proj-title">Accessible Fillable Form</div>
+          <p class="proj-desc">Created a fillable, screen-reader friendly form with proper labels and tab order.</p>
+          <div class="tags"><span class="tag">Form</span><span class="tag">Accessible PDF Forms</span><span class="tag">508</span></div>
+        </article>
+
+        <article class="proj-card">
+                    <div class="proj-title">OCR PDFs</div>
+          <p class="proj-desc">OCR PDFs accessibility means converting scanned or image-based PDFs into searchable, tagged, and screen reader–friendly documents with correct reading order, alt text, and WCAG/Section 508 compliance.</p>
+          <div class="tags"><span class="tag">OCR PDF</span><span class="tag">Searchable Image PDF</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="two-col">
+      <div class="card">
+        <h2>About Me</h2>
+        <p class="note">This description accurately reflects my reality. With two years of experience, I consistently deliver high-quality work through dedication and precision. My goal is to establish long-term relationships with clients. I specialize in PDF accessibility and creating fillable forms, ensuring 100% quality in my work. Currently, I am also expanding my skills by learning web development.</p>
+      </div>
+
+      <div class="card skills">
+        <h3>Skills & Tools</h3>
+        <ul>
+                              <li class="skill">WCAG 2.2 / 508</li>
+          <li class="skill">Form Accessibility</li>
+          <li class="skill">PAC / CommonLook</li>
+          <li class="skill">Adobe Acrobat Pro</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top: 30px;">
+      <div class="card">
+        <h2>Contact</h2>
+        <form onsubmit="handleForm(event)">
+          <label for="name">Your Name</label>
+          <input id="name" type="text" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" required></textarea>
+
+          <button class="btn" type="submit">Send Message</button>
+          <div id="form-status" role="status" aria-live="polite" class="note"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Kalaivanan S — Built with accessibility & semantic HTML</p>
+    </footer>
+  </main>
+
+  <script>
+    function handleForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('form-status');
+
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill in all fields.';
+        return;
+      }
+      if (!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email)) {
+        status.textContent = 'Please enter a valid email.';
+        return;
+      }
+
+      status.textContent = 'Thank you! Your message has been recorded.';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+    }
+  </script>
+</body>
+</html>
