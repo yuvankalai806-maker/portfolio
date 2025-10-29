@@ -1,0 +1,195 @@
+:root {
+  --bg: #001f3f;
+  --bg-gradient: linear-gradient(135deg, #6a11cb, #2575fc);
+  --muted: #a7b2c8;
+  --accent: #00bfff;
+  --accent-2: #f59e0b;
+  --text: #f0f4f8;
+  --radius: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ===== Base ===== */
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--bg-gradient);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,27,51,0.8);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Brand/Logo */
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #001f3f;
+  font-size: 16px;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover / Active effects */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a[aria-current="page"]::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffd700;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #f5f5f5;
+}
+
+.btn {
+  display: inline-block;
+  background: #fff;
+  color: #2575fc;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #ffd700;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* ===== Cards ===== */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 16px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+  nav ul {
+    justify-content: center;
+  }
+  .hero h2 { font-size: 1.7rem; }
+  .hero p { font-size: 0.95rem; }
+  .btn { padding: 10px 20px; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 12px; font-size: 14px; }
+  .logo { width: 36px; height: 36px; font-size: 14px; }
+  nav ul { flex-direction: column; gap: 6px; }
+  nav a { font-size: 12px; padding: 5px 6px; text-align: center; }
+  .hero h2 { font-size: 1.5rem; }
+  .hero p { font-size: 0.9rem; }
+  .card { padding: 12px; margin-top: 12px; font-size: 13px; }
+  footer { font-size: 11px; margin-top: 16px; }
+}

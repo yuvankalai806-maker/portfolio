@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work | Kalaivanan Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ======= RESET & BASE ======= */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                url('360_F_286464665_sDO2rTEWCJ7hegai5Z9BYCII6ZyDhUCP.jpg') center/cover no-repeat fixed;
+  }
+
+  /* ======= HEADER ======= */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 35px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid #00ffff;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  }
+
+  .logo h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #00ffff;
+    letter-spacing: 1px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  nav ul li a:hover,
+  nav ul li a[aria-current="page"] {
+    background: rgba(0,255,255,0.2);
+    color: #00ffff;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  }
+
+  /* ======= MAIN CONTENT ======= */
+  section {
+    text-align: center;
+    padding: 70px 20px;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 50px;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255,215,0,0.4);
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.15), transparent 60%);
+    transition: all 0.6s ease;
+  }
+
+  .card:hover::before {
+    top: 0;
+    left: 0;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(0,255,255,0.3);
+  }
+
+  .card h3 {
+    margin-bottom: 12px;
+    color: #00ffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin: 6px 0;
+  }
+
+  /* ======= FOOTER ======= */
+  footer {
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    color: #ccc;
+  }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 10px;
+      padding: 15px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 { font-size: 1.7rem; }
+    nav ul { gap: 10px; }
+    nav ul li a { font-size: 0.85rem; padding: 6px 10px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">
+    <img src="1.ico" alt="Kalaivanan Profile">
+    <h1>Kalaivanan</h1>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html" aria-current="page">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section>
+  <h2>My Works</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>PDF Accessibility</h3>  
+      <p>✅ Tag Structure Creation (Headings, Lists, Tables, Figures)<p>
+      <p>✅ Alt Text for Images & Figures<p>
+      <p>✅ Logical Reading Order Fix<p>
+      <p>✅ Table Tagging & Header Scope<p>
+      <p>✅ Tagging PDFs for screen readers and assistive technology.</p>
+      <p>✅ Ensuring logical reading order and semantic structure.</p>
+      <p>✅ Adding alternative text and accessible form fields.</p>
+      <p>✅ Remediating documents for WCAG 2.2 & Section 508 compliance.</p>
+      <p>✅ Link & Bookmark Accessibility<p>
+      <p>✅ Form Field Tagging & Tooltips<p>
+      <p>✅ Color Contrast & Visual Checks<p>
+      <p>✅ PAC 2024 Validation & Reports<p>
+      <p>✅ CommonLook PDF Verification<p>
+    </div>
+
+    <div class="card">
+      <h3>Accessibility Word & PowerPoint</h3>
+      <h4>🎯Word Accessibility<h4>
+      <p>✅ Proper Headings & Styles<p>
+      <p>✅ Alt Text for Images<p>
+      <p>✅ Table Structure & Reading Order<p>
+      <p>✅ Hyperlink & Color Contrast Fixes<p>
+
+      <h4>🎯PowerPoint Accessibility<h4>
+      <p>✅ Correct Slide Structure & Reading Order<p>
+      <p>✅ Alt Text for Visuals<p>
+      <p>✅ Font & Contrast Adjustments<p>
+      <p>✅ Accessible Templates & Navigation<p>
+    </div>
+
+    <div class="card">
+      <h3>🔖 Complete Accessibility PDF Services</h3>
+        <p>✅ Manual Tagging<p>
+        <p>✅ Accessibility Check (PAC / CommonLook)<p>
+        <p>✅ Metadata & Language Setup<p>
+        <p>✅ Accessibility Summary Report<p>
+        <p>✅ Compliance: WCAG 2.1 & PDF/UA<p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Kalaivanan S | Accessibility & Design Portfolio
+</footer>
+</body>
+</html>
